@@ -1,4 +1,5 @@
 # FTP Honeypot Setup with vsftpd (Ubuntu + Kali)
+# This is a project inside the IEEE Student Branch Team UOI-Arta.
 
 This document describes how we set up an **FTP honeypot** on an Ubuntu machine using **vsftpd**, and tested access from a Kali machine.  
 It includes all the steps, trial-and-error issues, and final working configuration.
