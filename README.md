@@ -86,4 +86,83 @@ ftp: Login failed`
 - Attackers are jailed into /srv/ftp
 - No uploads/writes allowed (Read-Only Environment)
 - Every login and command attempt is logged
-- This makes a simple but effective FTP honeypot for monitoring brute force attempts, enumeration, and attacker behavior
+- This makes a simple but effective FTP honeypot for monitoring brute force attempts, enumeration, and attacker behavior **EDITED: 19/08/2025**
+
+
+We encountered several issues during the setup, documented below step by step, including trial-and-error actions, errors, and resolutions attempted.
+
+
+## Initial SSH Installation
+
+1. Installed the OpenSSH server:
+```bash
+sudo apt update
+sudo apt install openssh-server
+```
+2. Verified the service:
+`systemctl status ssh`
+- Outcome: Service appeared active, running.
+3. Checked listening ports:
+`ss -tulnp | grep ssh`
+- Outcome: No output initially, causing confusion.
+4. Attempted connecting locally from Ubuntu:
+`ssh localhost`
+- Outcome: Connection Refused.
+
+
+## Firewall and Networking Checks
+1. Checked ufw status
+`sudo ufw status`
+- Outcome: Inactive, so firewall was not blocking it.
+2. Checked SSH listening with netstat/ss:
+` ss- tulnp | grep 22`
+- Outcome: Initially nothing, then confirmed SSH running after a restart.
+3. Tried connecting from Kali Linux machine (Same Network)
+`ssh <USER>@<IP>
+- Outcome: Connection refused by peer.
+- Possible causes investigated:
+  - Firewall issues -> UFW inactive
+  - Service misconfiguration -> Confirmed running
+  - Network restrictions -> Suspected router blocking
+
+
+## Remote Access Attempts
+1. Tried SSH remote forwarding to a public server:
+`ssh -R 2222:localhost:22 <USER@<PUBLIC-IP>`
+- Outcome: Connection refused
+- Problem: Did not have access to a public server or NAT configuration for port forwarding.
+2. Attempted using Ngrok TCP Tunnel:
+`ngrok tcp 22`
+- Outcome: Failed due to free account restrictions.
+3. Attempted using Cloudflare Tunnel (`cloudflared`):
+`cloudflared tunnel --url ssh://localhost:22`
+- Errors encountered:
+  - ICMP proxy warnings (ping_group_range issue)
+  - Missing origin certificate (cert.pem not found)
+  - UDP buffer warnings
+- Outcome: Tunnel partially established but could not get usable endpoint for SSH access.
+
+
+## Lessons Learned/Observations
+1. Setting up SSH is straightforward locally, but exposing it over the internet requires:
+- Public server or tunneling service
+- Proper firewall and router/NAT configuration
+- Service configuration (sshd_config) for secure access
+2. Free services like Ngrok limit TCP usage, making remote access harder.
+3. cloudflared requires proper configuration and certificates to function as a tunnel for SSH.
+4. Debugging Tips:
+- Always check which process listens on port 22:
+  - `ss -tulnp | grep 22`
+- Verify firewall or router rules
+- Use nc or telnet to quickly test connectivity:
+  -`nc -vz ubuntu_ip 22`
+
+
+## Next Steps (Future Improvements)
+1. Consider using reverse SSH via a public VPS to allow colleague access without opening ports on the home router.
+2. Automate honeypot logging and monitoring once remote access is established.
+3. Document alternative tunneling solutions that bypass NAT restrictions.
+
+
+## Conclusion
+Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility.
