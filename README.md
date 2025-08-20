@@ -165,4 +165,4 @@ sudo apt install openssh-server
 
 
 ## Conclusion
-Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility.
+Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility. **EDITED: 20/08/2025**
