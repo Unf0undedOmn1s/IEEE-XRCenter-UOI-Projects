@@ -168,7 +168,8 @@ sudo apt install openssh-server
 ## Final Status
 - FTP Honeypot works locally on ubuntu.
 - Remote acccess blocked by router restrictions.
-- Project to be finalized once machines are on the same network with colleague @Dimitrios-Nikolaos-Gkarsoudis.
+- Project to be finalized once machines are on the same network with colleague:
+- Dimitrios-Nikolaos-Gkarsoudis <https://github.com/Dimitrios-Nikolaos-Gkarsoudis>
 
 
 ## Conclusion
