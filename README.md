@@ -159,10 +159,17 @@ sudo apt install openssh-server
 
 
 ## Next Steps (Future Improvements)
-1. Consider using reverse SSH via a public VPS to allow colleague access without opening ports on the home router.
-2. Automate honeypot logging and monitoring once remote access is established.
-3. Document alternative tunneling solutions that bypass NAT restrictions.
+1. Test final deployment on the same network for full functionality.
+2. Optionally integrate:
+  - Splunk for log analysis.
+4. Consider VPS hosting for unrestricted access.
+
+
+## Final Status
+- FTP Honeypot works locally on ubuntu.
+- Remote acccess blocked by router restrictions.
+- Project to be finalized once machines are on the same network with colleague @Dimitrios-Nikolaos-Gkarsoudis.
 
 
 ## Conclusion
-Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility. **EDITED: 20/08/2025**
+Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility. **EDITED: 21/08/2025**
