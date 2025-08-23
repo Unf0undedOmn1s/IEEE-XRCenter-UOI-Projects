@@ -169,7 +169,7 @@ sudo ln -s /home/honeypotieee/Downloads/fake_fs /srv/ftp/fake_fs
 
 
 ## Conclusion
-Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility. **EDITED: 22/08/2025**
+Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility.
 
 
 ## Lessons Learned/Observations
@@ -190,4 +190,4 @@ Although we could not fully set up remote SSH access for external users, this ex
 ## Next Steps (Future Improvements)
 1. Test final deployment on the same network for full functionality.
 2. Optionally integrate:
-  - Splunk for log analysis.
+  - Splunk for log analysis. **EDITED: 23/08/2025**
