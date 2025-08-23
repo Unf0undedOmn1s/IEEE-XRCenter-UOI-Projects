@@ -162,8 +162,6 @@ sudo apt install openssh-server
 1. Test final deployment on the same network for full functionality.
 2. Optionally integrate:
   - Splunk for log analysis.
-4. Consider VPS hosting for unrestricted access.
-
 
 ## Final Status
 - FTP Honeypot works locally on ubuntu.
