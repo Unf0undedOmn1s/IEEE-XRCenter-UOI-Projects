@@ -81,7 +81,7 @@ ftp: Login failed`
 - vsFTPD logs all activity to: `/var/log/vsftpd.log`
 - To watch live: `sudo tail -f /var/log/vsftpd.log`
 
-## Final Notes
+## Notes
 - Honeypot allows anonymous login
 - Attackers are jailed into /srv/ftp
 - No uploads/writes allowed (Read-Only Environment)
@@ -185,6 +185,10 @@ Although we could not fully set up remote SSH access for external users, this ex
 - Verify firewall or router rules
 - Use nc or telnet to quickly test connectivity:
   -`nc -vz ubuntu_ip 22`
+
+
+  ## For More Info check out:
+  - `honeypot-screenshots`
 
 
 ## Next Steps (Future Improvements)
