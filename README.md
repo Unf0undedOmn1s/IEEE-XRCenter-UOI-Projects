@@ -93,7 +93,6 @@ We encountered several issues during the setup, documented below step by step, i
 
 
 ## Initial SSH Installation
-
 1. Installed the OpenSSH server:
 ```bash
 sudo apt update
@@ -143,6 +142,36 @@ sudo apt install openssh-server
 - Outcome: Tunnel partially established but could not get usable endpoint for SSH access.
 
 
+## Final Status
+- FTP Honeypot works locally on ubuntu.
+- Remote acccess blocked by router restrictions.
+- Project to be finalized once machines are on the same network with colleague:
+- Dimitrios-Nikolaos-Gkarsoudis <https://github.com/Dimitrios-Nikolaos-Gkarsoudis>
+
+
+## Fake File System Integration by Dimitios Gkarsoudis
+Created a script generating fake files at:
+- `/home/honeypotieee/Downloads/fake_fs`
+
+
+## Linked directory into FTP root:
+```bash
+sudo ln -s /home/honeypotieee/Downloads/fake_fs /srv/ftp/fake_fs
+```
+- Set proper permissions:
+  - `sudo chown -R ftp:ftp /srv/ftp/fake_fs`
+  - `sudo chmod -R 755 /srv/ftp/fake_fs`
+- Restarted vsFTPD:
+  -`sudo systemctl restart vsftpd`
+- Confirmed via FTP on Kali Linux machine:
+  - `ftp> cd fake_fs`
+    `ftp> ls`
+
+
+## Conclusion
+Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility. **EDITED: 22/08/2025**
+
+
 ## Lessons Learned/Observations
 1. Setting up SSH is straightforward locally, but exposing it over the internet requires:
 - Public server or tunneling service
@@ -162,13 +191,3 @@ sudo apt install openssh-server
 1. Test final deployment on the same network for full functionality.
 2. Optionally integrate:
   - Splunk for log analysis.
-
-## Final Status
-- FTP Honeypot works locally on ubuntu.
-- Remote acccess blocked by router restrictions.
-- Project to be finalized once machines are on the same network with colleague:
-- Dimitrios-Nikolaos-Gkarsoudis <https://github.com/Dimitrios-Nikolaos-Gkarsoudis>
-
-
-## Conclusion
-Although we could not fully set up remote SSH access for external users, this exercise provided important insights into network restrictions, firewall configurations, and tunneling solutions for secure honeypot deployment. All commands, errors, and trial-and-error steps are documented above for reference and reproducibility. **EDITED: 21/08/2025**
