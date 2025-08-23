@@ -62,3 +62,32 @@ put <file> # Upload file (if allowed)
   - A directory containing generated fake files.
   - Symlink or direct placement into FTP root.
   - Correct permissions for FTP to access.
+
+## Setup Example
+```bash
+# Fake filesystem path
+/home/honeypotieee/Downloads/fake_fs
+
+# Link fake FS to FTP root
+sudo ln -s /home/honeypotieee/Downloads/fake_fs /srv/ftp/fake_fs
+
+# Adjust permissions
+sudo chown -R ftp:ftp /srv/ftp/fake_fs
+sudo chmod -R 755 /srv/ftp/fake_fs
+
+# Restart FTP to apply changes
+sudo systemctl restart vsftpd
+```
+
+## Verification
+```bash
+ftp <server_ip>
+cd fake_fs
+ls
+```
+
+## 4. What it takes Services to work
+- vsftpd: Needs correct configuration, open ports, and readable/writable directories.
+- SSH: Needs active service, firewall access, and proper authentication.
+- Fake FS: Must be accessible to FTP user with proper permissions.
+
