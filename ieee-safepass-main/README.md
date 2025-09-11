@@ -1,5 +1,6 @@
 # Password Generator & Checker (Flask)
-
+- This is a project inside the IEEE Student Branch Team UOI-Arta.
+  - Project created by Dimitrios N. Gkarsoudis & Grivas Marios
 
 A simple **Flask web application** that generates strong random passwords and checks their safety based on length and character variety.  
 It features a **modern glassmorphism UI**, password generation, and a visual safe/unsafe indicator.
@@ -40,4 +41,5 @@ Then open your browser at
 - Contains at least one uppercase letter.
 - Contains at least one digit.
 - Contains at least one special character.
+
 
