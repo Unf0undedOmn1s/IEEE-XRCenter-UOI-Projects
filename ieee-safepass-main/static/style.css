@@ -43,3 +43,24 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
+/* Safety feedback styles */
+.safe-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.safe {
+  background-color: rgba(0, 255, 0, 0.15);
+  color: #90ee90;
+  border: 1px solid #90ee90;
+}
+
+.unsafe {
+  background-color: rgba(255, 0, 0, 0.15);
+  color: #ff7f7f;
+  border: 1px solid #ff7f7f;
+}
