@@ -15,10 +15,10 @@ It features a **modern glassmorphism UI**, password generation, and a visual saf
 ## Installation
 
 1. **Clone or download** the repository:
-   ```bash
-   git clone https://github.com/yourusername/password-app.git
-   cd password-app
-   ```
+```bash
+git clone https://github.com/yourusername/password-app.git
+cd password-app
+```
 2. Create a virtual environment (recommended)
 ```bash
 python -m venv venv
@@ -40,3 +40,4 @@ Then open your browser at
 - Contains at least one uppercase letter.
 - Contains at least one digit.
 - Contains at least one special character.
+
