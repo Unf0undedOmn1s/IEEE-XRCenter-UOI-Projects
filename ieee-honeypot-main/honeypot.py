@@ -6,17 +6,13 @@ import datetime
 LOGFILE = "honeypot_log.txt"
 FAKE_FS_DIR = "fake_fs"
 
-# =======================
-# Logging
-# =======================
+# Logging 
 def log_action(ip, command):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(LOGFILE, "a") as f:
         f.write(f"[{timestamp}] {ip} -> {command}\n")
 
-# =======================
-# Fake filesystem generator
-# =======================
+# Fake filesystem
 def generate_fake_fs():
     if not os.path.exists(FAKE_FS_DIR):
         os.makedirs(FAKE_FS_DIR)
@@ -38,9 +34,7 @@ def generate_fake_fs():
                 with open(filepath, "w") as f:
                     f.write(f"Fake sensitive data inside {file}\n")
 
-# =======================
 # Fake shell
-# =======================
 def fake_shell(client_socket, addr):
     ip = addr[0]
     cwd = os.path.join(FAKE_FS_DIR, "home/admin")  # start dir
@@ -57,7 +51,7 @@ def fake_shell(client_socket, addr):
 
         log_action(ip, command)
 
-        # ========== Handle commands ==========
+        # Commands handling
         if command in ["exit", "quit"]:
             client_socket.send(b"Goodbye!\n")
             break
@@ -106,9 +100,7 @@ def fake_shell(client_socket, addr):
 
     client_socket.close()
 
-# =======================
-# Main server
-# =======================
+# Server snippet
 def start_server(host="0.0.0.0", port=2222):
     generate_fake_fs()
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
